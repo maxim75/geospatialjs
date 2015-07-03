@@ -1,6 +1,6 @@
 {
   "name": "geospatialjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/maxim75/geospatialjs",
   "authors": [
     "Maksym Kozlenko <max@kozlenko.info>"
@@ -14,5 +14,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "knockoutjs": "~3.3.0"
+  }
 }
