@@ -1,0 +1,18 @@
+{
+  "name": "geospatialjs",
+  "version": "0.0.1",
+  "homepage": "https://github.com/maxim75/geospatialjs",
+  "authors": [
+    "Maksym Kozlenko <max@kozlenko.info>"
+  ],
+  "description": "Geospatial tools for JavaScript",
+  "main": "geospatial.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
