@@ -6,7 +6,9 @@
 
     QUnit.test("test", function () {
 
+        equal(testFunc(), 100);
         ok(true);
     });
+
 
 })();
