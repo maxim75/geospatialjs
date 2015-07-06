@@ -1,3 +1,3 @@
 var testFunc = function() {
-		return new 10*10;
+		return 10*10;
 }
