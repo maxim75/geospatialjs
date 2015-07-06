@@ -90,5 +90,5 @@ module.exports = function (grunt) {
 
 	grunt.registerTask("test", ["concat", "qunit", "jshint"]);
 	grunt.registerTask("default", ["concat", "qunit", "jshint", "uglify", "nuget"]);
-
+	grunt.registerTask("uglify", ["concat"]);
 };
