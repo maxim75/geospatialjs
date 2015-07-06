@@ -7,7 +7,8 @@
     QUnit.test("test", function () {
 
         equal(testFunc(), 100);
-        ok(true);
+        ok(window.ko);
+        ok(window.ko.observable);
     });
 
 
