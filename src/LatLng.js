@@ -77,8 +77,8 @@ GeospatialJS.LatLng = function(data)
 
     self.displayDms = ko.computed(function(glatlng)
     {
-        var ew = self.lng() < 0 ? lbank._["latlng_W"] : lbank._["latlng_E"];
-        var ns = self.lat() < 0 ? lbank._["latlng_S"] : lbank._["latlng_N"];
+        var ew = self.lng() < 0 ? "W" : "E";
+        var ns = self.lat() < 0 ? "S" : "N";
         
         return ns.format(self.toDmsFormat(self.lat())) + " " + ew.format(self.toDmsFormat(self.lng()));
     });
@@ -100,9 +100,8 @@ GeospatialJS.LatLng = function(data)
     self.distanceDisplay = function(point)
     {
         var dist = this.distance(point);
-        return (dist >= 1)
-            ? "{0} {1}".format(dist.formatNum(1), lbank._["km"])
-            : "{0} {1}".format((dist*1000).formatNum(), lbank._["m"]);
+        return (dist >= 1) ? "{0} {1}".format(dist.formatNum(1), "km")
+            : "{0} {1}".format((dist*1000).formatNum(), "m");
     };
 
     self.gridId = function() {
