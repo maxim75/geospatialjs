@@ -35,7 +35,7 @@ GeospatialJS.LatLng = function(data)
         var ew = self.lng() < 0 ? "W" : "E";
         var ns = self.lat() < 0 ? "S" : "N";
         
-        return ns.format(Math.abs(self.lat()).formatNum(4)) + " " + ew.format(Math.abs(self.lng()).formatNum(4));
+        return GeospatialJS.format(ns, Math.abs(GeospatialJS.formatNum(self.lat(), 4))) + " " + GeospatialJS.format(ew, Math.abs(GeospatialJS.formatNum(self.lng(), 4)));
     };
 
     self.distance = function(point)
@@ -72,7 +72,7 @@ GeospatialJS.LatLng = function(data)
 
     self.toDmsFormat =  function(deg) {
         var dms = self.toDms(deg);
-        return "{0}° {1}′ {2}″".format(Math.abs(dms[0]),dms[1],dms[2].toFixed(2));
+        return GeospatialJS.format("{0}° {1}′ {2}″", Math.abs(dms[0]), dms[1], dms[2].toFixed(2) );
     };
 
     self.displayDms = ko.computed(function(glatlng)
@@ -80,7 +80,7 @@ GeospatialJS.LatLng = function(data)
         var ew = self.lng() < 0 ? "W" : "E";
         var ns = self.lat() < 0 ? "S" : "N";
         
-        return ns.format(self.toDmsFormat(self.lat())) + " " + ew.format(self.toDmsFormat(self.lng()));
+        return GeospatialJS.format(ns, self.toDmsFormat(self.lat())) + " " + GeospatialJS.format(ew, self.toDmsFormat(self.lng()));
     });
 
     self.displayDec = ko.computed(function(glatlng)
@@ -100,8 +100,8 @@ GeospatialJS.LatLng = function(data)
     self.distanceDisplay = function(point)
     {
         var dist = this.distance(point);
-        return (dist >= 1) ? "{0} {1}".format(dist.formatNum(1), "km")
-            : "{0} {1}".format((dist*1000).formatNum(), "m");
+        return (dist >= 1) ?  GeospatialJS.format("{0} {1}", GeospatialJS.formatNum(dist, 1), "km")
+            : GeospatialJS.format("{0} {1}", GeospatialJS.formatNum(dist*1000), "m");
     };
 
     self.gridId = function() {
@@ -110,14 +110,14 @@ GeospatialJS.LatLng = function(data)
 
     self.geolocatorLink = function()
     {
-        return "http://tools.freeside.sk/geolocator/geolocator.html?q={0},{1}".format(
+        return GeospatialJS.format("http://tools.freeside.sk/geolocator/geolocator.html?q={0},{1}",
             self.lat(), self.lng()
         );  
     };
 
     self.mapLink = function(lang)
     {
-        return "/map/{0},{1}/15/{2}".format((""+self.lat()).replace(",", ".") , (""+self.lng()).replace(",", "."), lang ? lang : "en");
+        return GeospatialJS.format("/map/{0},{1}/15/{2}", (""+self.lat()).replace(",", ".") , (""+self.lng()).replace(",", "."), lang ? lang : "en");
     };
 
     self.NS = function() {
@@ -130,12 +130,12 @@ GeospatialJS.LatLng = function(data)
 
     self.geohackLink = function()
     {
-        return "http://toolserver.org/~geohack/geohack.php?params={0}_{1}_{2}_{3}".format(
+        return GeospatialJS.format("http://toolserver.org/~geohack/geohack.php?params={0}_{1}_{2}_{3}",
             Math.abs(self.lat()), self.NS(), Math.abs(self.lng()), self.EW()
         );  
     };
 
-    self.geocodeLink = ko.computed(function() {
-        return "/{0}".format(lbank.GeolocationCode.getCode(self.lat(),self.lng()));
-    });
+    // self.geocodeLink = ko.computed(function() {
+    //     return GeospatialJS.format("/{0}", lbank.GeolocationCode.getCode(self.lat(),self.lng()));
+    // });
 };

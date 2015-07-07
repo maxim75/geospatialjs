@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 			dist: {
 				src: [
 					"<%= meta.banner %>",
-					"src/test.js"
+					"src/*.js"
 				],
 				dest: "dist/<%= pkg.name %>.js"
 			},
@@ -29,7 +29,8 @@ module.exports = function (grunt) {
 		},
 		uglify: {
 			options: {
-				banner: "<%= meta.banner %>"
+				banner: "<%= meta.banner %>",
+				sourceMap: "dist/<%= pkg.name %>.min.js.map"
 			},
 			dist: {
 				files: {
