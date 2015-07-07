@@ -35,8 +35,7 @@ GeospatialJS.LatLng = function(data)
         var ew = self.lng() < 0 ? "W" : "E";
         var ns = self.lat() < 0 ? "S" : "N";
         
-        return ns.format(Math.abs(self.lat()).formatNum(4)) + " "
-            + ew.format(Math.abs(self.lng()).formatNum(4));
+        return ns.format(Math.abs(self.lat()).formatNum(4)) + " " + ew.format(Math.abs(self.lng()).formatNum(4));
     };
 
     self.distance = function(point)
@@ -60,15 +59,15 @@ GeospatialJS.LatLng = function(data)
     };
 
     self.toDms = function(deg) {
-        d = parseInt(deg);
+        d = parseInt(deg, 10);
         md = Math.abs(deg-d) * 60;
-        m = parseInt(md);
+        m = parseInt(md, 10);
         sd = (md - m) * 60;
         return [d, m, sd];
     };
 
     self.toJS = function() {
-        return { lat: self.lat(), lng: self.lng() }
+        return { lat: self.lat(), lng: self.lng() };
     };
 
     self.toDmsFormat =  function(deg) {
@@ -103,11 +102,11 @@ GeospatialJS.LatLng = function(data)
         var dist = this.distance(point);
         return (dist >= 1)
             ? "{0} {1}".format(dist.formatNum(1), lbank._["km"])
-            : "{0} {1}".format((dist*1000).formatNum(), lbank._["m"])
+            : "{0} {1}".format((dist*1000).formatNum(), lbank._["m"]);
     };
 
     self.gridId = function() {
-        return Math.round((90*100+Math.floor(self.lat()*100))*100000 + 180*100+Math.floor(self.lng()*100))
+        return Math.round((90*100+Math.floor(self.lat()*100))*100000 + 180*100+Math.floor(self.lng()*100));
     };
 
     self.geolocatorLink = function()
@@ -140,4 +139,4 @@ GeospatialJS.LatLng = function(data)
     self.geocodeLink = ko.computed(function() {
         return "/{0}".format(lbank.GeolocationCode.getCode(self.lat(),self.lng()));
     });
-}
+};
