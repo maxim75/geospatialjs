@@ -1,5 +1,5 @@
 // GeospatialJS
-var GeospatialJS = GeospatialJS || {};
+GeospatialJS = GeospatialJS || {};
 
 GeospatialJS.LatLng = function(data)
 {
@@ -36,15 +36,20 @@ GeospatialJS.LatLng = function(data)
         var ew = self.lng() < 0 ? "W" : "E";
         var ns = self.lat() < 0 ? "S" : "N";
         
-        return GeospatialJS.format(ns, Math.abs(GeospatialJS.formatNum(self.lat(), 4))) + " " + GeospatialJS.format(ew, Math.abs(GeospatialJS.formatNum(self.lng(), 4)));
+        return GeospatialJS.format("{0}\u00a0{1} {2}\u00a0{3}", 
+            Math.abs(GeospatialJS.formatNum(self.lat(), 4)), 
+            ns, 
+            Math.abs(GeospatialJS.formatNum(self.lng(), 4)),
+            ew
+        );
     };
 
     self.distance = function(point)
     {
         var toRad = function(value) { return value * Math.PI / 180; };
         
-        if(!(point instanceof lbank.model.LatLng))
-            throw "lbank.model.LatLng object expected";
+        if(!(point instanceof GeospatialJS.LatLng))
+            throw "GeospatialJS.LatLng object expected";
         
         var R = 6371; // km
         var dLat = toRad((point.lat()-this.lat()));
@@ -81,7 +86,12 @@ GeospatialJS.LatLng = function(data)
         var ew = self.lng() < 0 ? "W" : "E";
         var ns = self.lat() < 0 ? "S" : "N";
         
-        return GeospatialJS.format(ns, self.toDmsFormat(self.lat())) + " " + GeospatialJS.format(ew, self.toDmsFormat(self.lng()));
+        return GeospatialJS.format("{0} {1} {2} {3}", 
+            self.toDmsFormat(self.lat()),
+            ns, 
+            self.toDmsFormat(self.lng()),
+            ew
+        );
     });
 
     self.displayDec = ko.computed(function(glatlng)
