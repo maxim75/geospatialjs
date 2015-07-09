@@ -1,3 +1,10 @@
+/* 
+ * Copyright (C) 2015 Maksym Kozlenko <max@kozlenko.info>
+ *
+ * This software may be modified and distributed under the terms
+ * of the MIT license.  See the LICENSE file for details.
+ */
+
 (function () {
     "use strict";
 
@@ -69,6 +76,11 @@
         ok(dms.indexOf("50°") != -1, dms);
     });
 
+    QUnit.test("toDms", function() {
+        equal(JSON.stringify(new GeospatialJS.LatLng([0, 0]).toDms(50.5)), JSON.stringify([50, 30, 0]));
+    });
+
+
     QUnit.test("str", function() {
         equal(new GeospatialJS.LatLng([50.4122423423, 30.323423434]).str(), "50.4122423423,30.323423434");
     });
@@ -98,5 +110,10 @@
         var result = new GeospatialJS.LatLng([0.123,45.678]).toJS();
         equal(result.lat, 0.123);
         equal(result.lng, 45.678);
+    });
+
+    QUnit.test("geocodeLink", function() {
+        var result = new GeospatialJS.LatLng([0.123,45.678]).geocodeLink();
+        equal(result, "https://geolocation.ws/GEOpAFjsg6t");
     });
 })();

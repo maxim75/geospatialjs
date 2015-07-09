@@ -1,3 +1,10 @@
+/* 
+ * Copyright (C) 2015 Maksym Kozlenko <max@kozlenko.info>
+ *
+ * This software may be modified and distributed under the terms
+ * of the MIT license.  See the LICENSE file for details.
+ */
+
 var GeospatialJS = GeospatialJS || {};
 
 GeospatialJS.format = function(formatString) {

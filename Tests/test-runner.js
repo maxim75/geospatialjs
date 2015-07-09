@@ -8,7 +8,9 @@
 	});
 
 	require([
-		'test.js'
+		'UtilTest.js',
+		'LatLngTest.js',
+		'GeolocationCodeTest.js'
 	], QUnit.start);
 
 }());
