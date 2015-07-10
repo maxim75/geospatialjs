@@ -10,7 +10,8 @@
 	require([
 		'UtilTest.js',
 		'LatLngTest.js',
-		'GeolocationCodeTest.js'
+		'GeolocationCodeTest.js',
+		'BoundingBoxTest.js'
 	], QUnit.start);
 
 }());

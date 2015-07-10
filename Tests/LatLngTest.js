@@ -10,6 +10,14 @@
 
     QUnit.module("LatLng");
 
+    QUnit.test("init_default", function() {
+        var point = new GeospatialJS.LatLng();
+
+        equal(point.lat(), 0, point.lat());
+        equal(point.lng(), 0, point.lng());
+        equal(point.display(), "0\u00a0N 0\u00a0E", point.display().replace(" ", " "));
+    });
+
     QUnit.test("init", function() {
         var point = new GeospatialJS.LatLng([50.4122423423, 30.323423434]);
 
