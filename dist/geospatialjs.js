@@ -366,13 +366,18 @@ GeospatialJS.format = function(formatString) {
 };
 
 GeospatialJS.formatNum = function(value, precision, options) {
-  var defaultOptions = { 
-    "thousandSeparator": ",",
-    "decimalSeparator": "."
-  };
-  var opt = $.extend({}, defaultOptions, options);
-  var f = "";
-  if(precision && precision > 0)
-    f = opt.decimalSeparator + value.toFixed(precision).slice(-precision); 
-  return value.toFixed(2).slice(0,-3).replace(/(?=(?!^)(?:\d{3})+(?!\d))/g, opt.thousandSeparator) + f;
+    if(!value)
+        return null;
+    var defaultOptions = { 
+        "thousandSeparator": ",",
+        "decimalSeparator": "."
+    };
+
+    var opt = $.extend({}, defaultOptions, options);
+    var f = "";
+    
+    if(precision && precision > 0)
+        f = opt.decimalSeparator + value.toFixed(precision).slice(-precision); 
+    
+    return value.toFixed(2).slice(0,-3).replace(/(?=(?!^)(?:\d{3})+(?!\d))/g, opt.thousandSeparator) + f;
 };

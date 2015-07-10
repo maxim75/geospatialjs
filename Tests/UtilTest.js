@@ -13,4 +13,9 @@
     QUnit.test("format", function () {
         equal(GeospatialJS.format("{0} {1}", "a", 2), "a 2");
     });
+
+    QUnit.test("formatNum", function () {
+        equal(GeospatialJS.formatNum(1.234567, 4), "1.2346");
+        equal(GeospatialJS.formatNum(null, 4), null);
+    });
 })();
