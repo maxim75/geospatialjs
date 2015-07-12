@@ -198,7 +198,7 @@ GpxTracks = GpxTracks || {};
 (function (mod) {
     "use strict";
 
-    GpxTracks.TrackPoint = function(xmlNode, index, segment) {
+    mod.TrackPoint = function(xmlNode, index, segment) {
         var self = this;
 
         self.index = index;
@@ -282,7 +282,7 @@ GpxTracks = GpxTracks || {};
         }
     };
 
-    GpxTracks.TrackSegment = function(xmlNode, index, track) {
+    mod.TrackSegment = function(xmlNode, index, track) {
         var self = this;
 
         var trackpoints = xmlNode.getElementsByTagName("trkpt");
@@ -297,7 +297,7 @@ GpxTracks = GpxTracks || {};
         self.endTime = _(self.points).max(function(x) { return x.time.unix(); }).time;
     };
 
-    GpxTracks.GpxTrack = function(trackXml) {
+    mod.GpxTrack = function(trackXml) {
         var self = this;
 
         self.getClosestPoint = function(timestamp) {
