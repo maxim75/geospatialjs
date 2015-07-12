@@ -1,6 +1,6 @@
 {
   "name": "geospatialjs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Geospatial objects for JavaScript",
   "author": "Maksym Kozlenko <max@kozlenko.info>",
   "repository": {
