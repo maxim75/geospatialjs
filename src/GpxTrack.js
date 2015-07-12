@@ -22,7 +22,7 @@ GpxTracks = GpxTracks || {};
         self.getNearbyPoint = function(index) {
             var targetIndex = self.index + index;
             if(targetIndex < 0 || targetIndex > self.segment.points.length-1)
-                return null
+                return null;
             return self.segment.points[targetIndex];
         };
 
@@ -54,10 +54,10 @@ GpxTracks = GpxTracks || {};
                 points.push(point);                
             }
 
-            if(points.length == 0) return null;
+            if(points.length === 0) return null;
             var time = self.time.unix() - points[points.length-1].time.unix();
             for(var j=0; j<points.length; j++) {
-                distance += points[j].distance(j == 0 ? self : points[j-1]);
+                distance += points[j].distance(j === 0 ? self : points[j-1]);
             }
 
             return distance/(time/3600); // km/h
