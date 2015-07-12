@@ -11,7 +11,8 @@
 		'UtilTest.js',
 		'LatLngTest.js',
 		'GeolocationCodeTest.js',
-		'BoundingBoxTest.js'
+		'BoundingBoxTest.js',
+		'GpxTrackTest.js'
 	], QUnit.start);
 
 }());

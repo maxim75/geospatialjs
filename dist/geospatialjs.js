@@ -185,7 +185,7 @@ GeospatialJS = GeospatialJS || {};
       return str.substring(0, str.length - 1);
     };
 
-})(GeospatialJS);;/* 
+})(GeospatialJS);;;/* 
  * Copyright (C) 2015 Maksym Kozlenko <max@kozlenko.info>
  *
  * This software may be modified and distributed under the terms
