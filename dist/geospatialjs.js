@@ -192,8 +192,8 @@ GeospatialJS = GeospatialJS || {};
  * of the MIT license.  See the LICENSE file for details.
  */
 
-var GpxTracks;
-GpxTracks = GpxTracks || {};
+var GeospatialJS;
+GeospatialJS = GeospatialJS || {};
 
 (function (mod) {
     "use strict";
@@ -289,7 +289,7 @@ GpxTracks = GpxTracks || {};
         
         var pointIndex = 0;
         self.points = _(trackpoints).map(function(x) { 
-            return new GpxTracks.TrackPoint(x, pointIndex++, self); 
+            return new mod.TrackPoint(x, pointIndex++, self); 
         });
 
         self.index = index; 
@@ -350,10 +350,10 @@ GpxTracks = GpxTracks || {};
 
         var idx = 0;
         self.segments = _(trackXml.getElementsByTagName("trkseg")).map(function(x) { 
-            return new GpxTracks.TrackSegment(x, idx++, self); 
+            return new mod.TrackSegment(x, idx++, self); 
         });
     };
-}(GpxTracks));
+}(GeospatialJS));
 
 ;/* 
  * Copyright (C) 2015 Maksym Kozlenko <max@kozlenko.info>
