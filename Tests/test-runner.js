@@ -12,7 +12,9 @@
 		'LatLngTest.js',
 		'GeolocationCodeTest.js',
 		'BoundingBoxTest.js',
-		'GpxTrackTest.js'
+		'GpxTrackTest.js',
+		'TrackPointTest.js',
+		'TrackSegmentTest.js'
 	], QUnit.start);
 
 }());

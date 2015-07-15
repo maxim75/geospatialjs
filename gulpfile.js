@@ -8,22 +8,6 @@ var gutil = require('gulp-util');
 var qunit = require('gulp-qunit');
 var sourcemaps = require('gulp-sourcemaps');
 
-// gulp.task('default', function() {
-//     console.log("Gulp!");
-
-//     return gulp.src('src/*.js') 
-//         .pipe(sourcemaps.init())
-//         .pipe(jshint())
-//         .pipe(jshint.reporter(stylish))
-//         .pipe(concat('geospatialjs.js'))
-//         .pipe(gulp.dest('dist'))
-//         .pipe(uglify({ outSourceMap: true }))
-//         .pipe(sourcemaps.write('.'))
-//         .pipe(rename('geospatialjs.min.js'))
-//         .pipe(gulp.dest('dist'))
-//         .on('error', gutil.log);
-// });
-
 gulp.task('test', function() {
     return gulp.src('./Tests/test-runner.html')
         .pipe(qunit());

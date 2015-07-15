@@ -1,6 +1,6 @@
 {
   "name": "geospatialjs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/maxim75/geospatialjs",
   "authors": [
     "Maksym Kozlenko <max@kozlenko.info>"
@@ -17,5 +17,10 @@
   ],
   "dependencies": {
     "knockoutjs": "~3.3.0"
+  },
+  "devDependencies": {
+    "momentjs": "~2.10.3",
+    "underscore": "~1.8.3",
+    "jquery": "~2.1.4"
   }
 }
