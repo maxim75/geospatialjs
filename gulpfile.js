@@ -7,10 +7,15 @@ var stylish = require('jshint-stylish');
 var gutil = require('gulp-util');
 var qunit = require('gulp-qunit');
 var sourcemaps = require('gulp-sourcemaps');
+var coveralls = require('gulp-coveralls');
 
 gulp.task('test', function() {
     return gulp.src('./Tests/test-runner.html')
-        .pipe(qunit());
+        .pipe(qunit())
+        .on('qunit.report', function() { console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA") });
+
+    gulp.src('test/coverage/**/lcov.info')
+        .pipe(coveralls());
 });
 
 
@@ -27,6 +32,8 @@ gulp.task('build', function() {
     .pipe(sourcemaps.write("."))
     
     .pipe(gulp.dest('dist'));
+
+    
 });
 
 gulp.task('default', [ "build", "test" ]);
