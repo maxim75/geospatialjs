@@ -102,18 +102,11 @@
         equal(new GeospatialJS.LatLng([50.4122423423, 30.323423434]).gridId(), 1404121032);
     });    
 
-    QUnit.test("geolocatorLink", function() {
-        equal(new GeospatialJS.LatLng([0.123,45.678]).geolocatorLink(), "http://tools.freeside.sk/geolocator/geolocator.html?q=0.123,45.678");
-    });
-
     QUnit.test("mapLink", function() {
         equal(new GeospatialJS.LatLng([0.123,45.678]).mapLink(), "/map/0.123,45.678/15/en");
     });
 
-    QUnit.test("geohackLink", function() {
-        equal(new GeospatialJS.LatLng([0.123,45.678]).geohackLink(), "http://toolserver.org/~geohack/geohack.php?params=0.123_N_45.678_E");
-    });
-
+    
     QUnit.test("toJS", function() {
         var result = new GeospatialJS.LatLng([0.123,45.678]).toJS();
         equal(result.lat, 0.123);

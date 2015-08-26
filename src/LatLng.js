@@ -129,13 +129,6 @@ GeospatialJS = GeospatialJS || {};
             return Math.round((90*100+Math.floor(self.lat()*100))*100000 + 180*100+Math.floor(self.lng()*100));
         };
 
-        self.geolocatorLink = function()
-        {
-            return GeospatialJS.format("http://tools.freeside.sk/geolocator/geolocator.html?q={0},{1}",
-                self.lat(), self.lng()
-            );  
-        };
-
         self.mapLink = function(lang)
         {
             return GeospatialJS.format("/map/{0},{1}/15/{2}", (""+self.lat()).replace(",", ".") , (""+self.lng()).replace(",", "."), lang ? lang : "en");
@@ -147,13 +140,6 @@ GeospatialJS = GeospatialJS || {};
 
         self.EW = function() {
             return self.lng() >= 0 ? "E" : "W";
-        };
-
-        self.geohackLink = function()
-        {
-            return GeospatialJS.format("http://toolserver.org/~geohack/geohack.php?params={0}_{1}_{2}_{3}",
-                Math.abs(self.lat()), self.NS(), Math.abs(self.lng()), self.EW()
-            );  
         };
 
         self.geocodeLink = ko.computed(function() {

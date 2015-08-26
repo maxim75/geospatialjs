@@ -22,9 +22,26 @@ GeospatialJS = GeospatialJS || {};
             return new mod.TrackPoint(x, pointIndex++, self); 
         });
 
+        self.convertToMultiline = function() { 
+            var coordinates = _(self.points).map(function(point) {
+                return [ point.lng, point.lat ];
+            });
+            
+            return {
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": coordinates
+                }
+            };
+        };
+
         self.index = index; 
         self.startTime = _(self.points).min(function(x) { return x.time.unix(); }).time;
         self.endTime = _(self.points).max(function(x) { return x.time.unix(); }).time;
+
+        
     };   
 }(GeospatialJS));
 
