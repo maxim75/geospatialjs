@@ -129,11 +129,6 @@ GeospatialJS = GeospatialJS || {};
             return Math.round((90*100+Math.floor(self.lat()*100))*100000 + 180*100+Math.floor(self.lng()*100));
         };
 
-        self.mapLink = function(lang)
-        {
-            return GeospatialJS.format("/map/{0},{1}/15/{2}", (""+self.lat()).replace(",", ".") , (""+self.lng()).replace(",", "."), lang ? lang : "en");
-        };
-
         self.NS = function() {
             return self.lat() >= 0 ? "N" : "S";
         };
@@ -141,9 +136,5 @@ GeospatialJS = GeospatialJS || {};
         self.EW = function() {
             return self.lng() >= 0 ? "E" : "W";
         };
-
-        self.geocodeLink = ko.computed(function() {
-             return GeospatialJS.format("https://geolocation.ws/{0}", mod.GeolocationCode.getCode(self.lat(),self.lng()));
-        });
     };
 })(GeospatialJS);

@@ -101,20 +101,10 @@
     QUnit.test("gridId", function() {
         equal(new GeospatialJS.LatLng([50.4122423423, 30.323423434]).gridId(), 1404121032);
     });    
-
-    QUnit.test("mapLink", function() {
-        equal(new GeospatialJS.LatLng([0.123,45.678]).mapLink(), "/map/0.123,45.678/15/en");
-    });
-
     
     QUnit.test("toJS", function() {
         var result = new GeospatialJS.LatLng([0.123,45.678]).toJS();
         equal(result.lat, 0.123);
         equal(result.lng, 45.678);
-    });
-
-    QUnit.test("geocodeLink", function() {
-        var result = new GeospatialJS.LatLng([0.123,45.678]).geocodeLink();
-        equal(result, "https://geolocation.ws/GEOpAFjsg6t");
     });
 })();

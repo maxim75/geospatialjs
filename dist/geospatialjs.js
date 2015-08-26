@@ -389,11 +389,6 @@ GeospatialJS = GeospatialJS || {};
             return Math.round((90*100+Math.floor(self.lat()*100))*100000 + 180*100+Math.floor(self.lng()*100));
         };
 
-        self.mapLink = function(lang)
-        {
-            return GeospatialJS.format("/map/{0},{1}/15/{2}", (""+self.lat()).replace(",", ".") , (""+self.lng()).replace(",", "."), lang ? lang : "en");
-        };
-
         self.NS = function() {
             return self.lat() >= 0 ? "N" : "S";
         };
@@ -401,10 +396,6 @@ GeospatialJS = GeospatialJS || {};
         self.EW = function() {
             return self.lng() >= 0 ? "E" : "W";
         };
-
-        self.geocodeLink = ko.computed(function() {
-             return GeospatialJS.format("https://geolocation.ws/{0}", mod.GeolocationCode.getCode(self.lat(),self.lng()));
-        });
     };
 })(GeospatialJS);
 /* 
@@ -604,7 +595,7 @@ GeospatialJS = GeospatialJS || {};
     mod.WebResources = {
         geolocatorLink: function(latLng)
         {
-            return GeospatialJS.format("http://tools.freeside.sk/geolocator/geolocator.html?q={0},{1}",
+            return mod.format("http://tools.freeside.sk/geolocator/geolocator.html?q={0},{1}",
                 latLng.lat(), latLng.lng()
             );  
         },
@@ -617,16 +608,32 @@ GeospatialJS = GeospatialJS || {};
             var east = latLng.lng()+scaleInDegrees/2;
             var west = latLng.lng()-scaleInDegrees/2;
 
-            return GeospatialJS.format("http://www.mapillary.com/map/search/{0}/{1}/{2}/{3}",
+            return mod.format("http://www.mapillary.com/map/search/{0}/{1}/{2}/{3}",
                 south, north, west, east
             );  
         },
 
         geohack: function(latLng)
         {
-            return GeospatialJS.format("http://toolserver.org/~geohack/geohack.php?params={0}_{1}_{2}_{3}",
+            return mod.format("http://toolserver.org/~geohack/geohack.php?params={0}_{1}_{2}_{3}",
                 Math.abs(latLng.lat()), latLng.NS(), Math.abs(latLng.lng()), latLng.EW()
             );  
+        },
+
+        geocodeLink: function(latLng) {
+             return mod.format("https://geolocation.ws/{0}", 
+                mod.GeolocationCode.getCode(latLng.lat(),latLng.lng()));
+        },
+
+        geolocationWsMapLink: function(latLng, options) {
+            var lang = (options && options.lang) || "en";
+            var zoom = (options && options.zoom) || 15;
+
+            return mod.format("https://geolocation.ws/map/{0},{1}/{2}/{3}", 
+                (""+latLng.lat()).replace(",", ".") , 
+                (""+latLng.lng()).replace(",", "."), 
+                zoom,
+                lang);
         }
     };   
 }(GeospatialJS));
