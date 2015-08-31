@@ -23,7 +23,7 @@ GeospatialJS = GeospatialJS || {};
                     var lng = parseFloat((position.coords) ? new String(position.coords.longitude) : position.y);
 
                     func({
-                        loc: new lbank.model.LatLng([lat, lng]),
+                        loc: new mod.LatLng([lat, lng]),
                         accuracy: position.coords.accuracy,
                         altitude: position.coords.altitude,
                         speed: position.coords.speed,
