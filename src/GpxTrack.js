@@ -60,12 +60,30 @@ GeospatialJS = GeospatialJS || {};
             });
         };
 
+        self.startTime = function() { 
+            var self = this;
+
+            return self.segments.length > 0 ? 
+                self.segments[0].startTime
+                : null;
+        }; 
+
+        self.endTime = function() { 
+            var self = this;
+
+            return self.segments.length > 0 ? 
+                self.segments[self.segments.length-1].endTime
+                : null;
+        }; 
+
         //-- init
 
         var idx = 0;
         self.segments = _(trackXml.getElementsByTagName("trkseg")).map(function(x) { 
             return new mod.TrackSegment(x, idx++, self); 
         });
+
+
     };
 }(GeospatialJS));
 
