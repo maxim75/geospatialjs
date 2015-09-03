@@ -16,7 +16,9 @@ Provider objects to work with geospatial object, tools and resources
 
 Create point with coordinates
 
-   var point = new GeospatialJS.LatLng([50.41, 30.32]);
+```js
+var point = new GeospatialJS.LatLng([50.41, 30.32]);
+```
 
 ##Project status##
 

@@ -14,7 +14,8 @@
 		'BoundingBoxTest.js',
 		'GpxTrackTest.js',
 		'TrackPointTest.js',
-		'TrackSegmentTest.js'
+		'TrackSegmentTest.js',
+		'WebResourcesTest.js'
 	], QUnit.start);
 
 }());
